@@ -1,0 +1,28 @@
+Problem:- https://leetcode.com/problems/rotate-image/
+
+
+
+Solution:-
+
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) {
+        int n = matrix.size();  // Gives total no. of rows in matrix
+
+        //find the transpose of matrix
+        for(int i=0;i<n;i++){
+            for(int j=i;j<matrix[i].size();j++){
+                swap(matrix[i][j],matrix[j][i]);
+            }
+        }
+
+        //reverse each row in transposed matrix
+        for(int i=0;i<n;i++){
+            reverse(matrix[i].begin(),matrix[i].end());
+        }
+    }
+};
+
+
+Time Complexity: O(n^2)
+Space Complexity: O(1)

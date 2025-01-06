@@ -1,0 +1,50 @@
+Problem: https://leetcode.com/problems/row-with-maximum-ones/description/
+
+
+
+Solution: - 
+
+class Solution {
+public:
+    vector<int> rowAndMaximumOnes(vector<vector<int>>& mat) {
+        vector<int>ans;
+
+        //get the total number of rows of mat[] array
+        int n = mat.size();
+
+        int oneCount = INT_MIN;   //used to store max no. of 1's in each row
+        int rowNo;      // used to store that particular row no. where max no. of 1's are found
+
+        //To access elements in 2D array
+        for(int i=0;i<n;i++){
+            //Initialize temporary count for each row
+            int count = 0;
+
+            //If 1 found, then increment count
+            for(int j=0;j<mat[i].size();j++){
+                if(mat[i][j]==1){
+                    count++;
+                }
+            }
+
+                // after row completion, compare count with oneCount and store the current rowNo
+                if(oneCount<count){
+                   oneCount = count;
+                   rowNo = i;
+                }
+
+        }
+
+        
+            ans.push_back(rowNo);
+            ans.push_back(oneCount);
+
+            return ans;
+
+
+    }
+};
+
+
+Space Complexity = O(n)
+Time Complexity = O(n^2)
