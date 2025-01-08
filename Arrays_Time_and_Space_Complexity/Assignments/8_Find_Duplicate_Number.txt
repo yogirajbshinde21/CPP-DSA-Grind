@@ -1,2 +1,68 @@
-Watch in leetcode as my solution isn't as expected as mentioned in the question, we need to solve that problem without modifying the input array. 
-also we don't need to use any extra space, and time complexity should be O(n).
+
+
+Solution:-
+
+Method 1: This method is done by modifying the input array, that means, sorting is performed in this method. 
+          But in the code, it's mentioned that we need to find the method which doesn't modified the input array.
+
+
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        int n = nums.size();
+        int i=0;
+        int j=1;
+        int final_val = 0;
+
+        //First we will sort an array in asceding order (we can also do in descending order.)
+        sort(nums.begin(),nums.end());
+
+        while(j<n){
+            if(nums[i]==nums[j]){
+                final_val = nums[i];
+                break;
+            }
+            else{
+                i++;
+                j++;
+            }
+        }
+        return final_val;
+    }
+};
+
+
+Time complexity: O(n*logn)
+Space complexity: O(1)
+
+
+
+==============================================================================
+
+
+Method 2: Negative Marking Method
+
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+
+        int n = nums.size();
+        int ans;
+
+        for(int i=0;i<n;i++){
+            int index = abs(nums[i]);
+
+            //Already visited?
+            if(nums[index]<0){
+                ans = index;
+            }
+            else{
+                //visited mark
+                nums[index] *= -1;
+            }
+        }
+
+        return ans;
+    }
+    
+};
