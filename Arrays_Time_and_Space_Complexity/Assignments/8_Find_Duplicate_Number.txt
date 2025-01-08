@@ -1,0 +1,2 @@
+Watch in leetcode as my solution isn't as expected as mentioned in the question, we need to solve that problem without modifying the input array. 
+also we don't need to use any extra space, and time complexity should be O(n).
