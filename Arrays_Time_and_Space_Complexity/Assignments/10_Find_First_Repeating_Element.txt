@@ -1,0 +1,38 @@
+Problem : https://www.geeksforgeeks.org/problems/first-repeating-element4018/1
+
+
+
+
+
+Solution:
+
+class Solution {
+  public:
+    // Function to return the position of the first repeating element.
+    int firstRepeated(vector<int> &arr) {
+        int n = arr.size();
+        
+        //mapping occurences using unordered_map STL
+        unordered_map<int,int>hash;
+        for(int i=0;i<n;i++){
+            hash[arr[i]]++;
+        }
+        
+        
+        //Check if element is appeared more than 1 
+        for(int i=0;i<n;i++){
+            if(hash[arr[i]]>1){
+                return i+1;
+            }
+           
+        }
+        
+        return -1;
+        
+        
+    }
+};
+
+
+Time Complexity: O(n)
+Space Complexity: O(n)
